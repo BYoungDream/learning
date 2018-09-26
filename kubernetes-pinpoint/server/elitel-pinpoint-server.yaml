@@ -1,0 +1,117 @@
+kind: Service
+apiVersion: v1
+metadata:
+  namespace: default
+  name: service-pinpoint-server
+  labels:
+    app: service-pinpoint-server
+spec:
+  ports:
+    - name: coll1
+      protocol: TCP
+      port: 9994
+      targetPort: 9994
+    - name: coll2
+      protocol: UDP
+      port: 9995
+      targetPort: 9995
+    - name: coll3
+      protocol: UDP
+      port: 9996
+      targetPort: 9996
+    - name: webui
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 8510
+    - name: hbase
+      protocol: TCP
+      port: 16010
+      targetPort: 16010
+      nodePort: 8512
+
+  selector:
+    app: pod-pinpoint-server
+  type: NodePort
+  sessionAffinity: ClientIP
+---
+kind: Deployment
+apiVersion: apps/v1beta2
+metadata:
+  namespace: default
+  name: deployment-pinpoint-server
+  labels:
+    app: deployment-pinpoint-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pod-pinpoint-server
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: pod-pinpoint-server
+    spec:
+      nodeSelector:
+        beta.kubernetes.io/os: linux
+      containers:
+        - name: container-pinpoint-server
+          image: 192.168.0.177/library/elitel-pinpoint-server:v1.0.0
+          tty: true
+          securityContext:
+            privileged: true
+          ports:
+            - name: coll1
+              protocol: TCP
+              containerPort: 9994
+            - name: coll2
+              protocol: UDP
+              containerPort: 9995
+            - name: coll3
+              protocol: UDP
+              containerPort: 9996
+            - name: webui
+              protocol: TCP
+              containerPort: 8080
+            - name: hbase
+              protocol: TCP
+              containerPort: 16010
+              
+          env:
+            - name: EXTERNAL_HBASE_PORT
+              value: "2181"
+            - name: CLUSTER_ENABLE
+              value: "true"
+            - name: CLUSTER_ZOOKEEPER_ADDRESS
+              value: "localhost"
+            - name: HBASE_HOST
+              value: "127.0.0.1"
+            - name: HBASE_PORT
+              value: "2181"
+            - name: COLLECTOR_RECEIVER_BASE_PORT
+              value: "9994"
+            - name: COLLECTOR_RECEIVER_STAT_UDP_PORT
+              value: "9995"
+            - name: COLLECTOR_RECEIVER_SPAN_UDP_PORT
+              value: "9996"
+            - name: COLLECTOR_DEBUG_LEVEL
+              value: "INFO"
+            - name: WEB_PAGE_PORT
+              value: "8079"
+            - name: ADMIN_PASSWORD
+              value: "admin"
+            - name: ANALYTICS
+              value: "true"
+            - name: WEB_DEBUG_LEVEL
+              value: "INFO"
+
+          #command: ["/bin/bash","/usr/local/bin/cmd-app.sh"]
+
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+
