@@ -61,7 +61,7 @@ spec:
         beta.kubernetes.io/os: linux
       containers:
         - name: container-pinpoint-server
-          image: 192.168.0.177/library/elitel-pinpoint-server:v1.0.0
+          image: pinpoint-server:v1.0.0
           tty: true
           securityContext:
             privileged: true
