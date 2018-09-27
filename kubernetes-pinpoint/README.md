@@ -1,1 +1,2 @@
-#pinpoint在kubernets中部署
+# pinpoint在kubernets中部署
+1、把pinpoint中collector、web、hbase打包到一个docker镜像中
