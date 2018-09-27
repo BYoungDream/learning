@@ -1,0 +1,1 @@
+#pinpoint在kubernets中部署
