@@ -1,2 +1,8 @@
 # 使用grafana作为prometheus可视化界面
-1、代码使用grafana的5.3.4版本进行汉化
+1、代码使用grafana的5.3.4版本进行汉化<br />
+2、汉化后的效果如下<br />
+#### 首页
+![Image text](https://raw.githubusercontent.com/BYoungDream/learning/master/img-folder/grafanaview.png)
+
+#### 监控效果
+![Image text](https://raw.githubusercontent.com/BYoungDream/learning/master/img-folder/grafanavv.png)
