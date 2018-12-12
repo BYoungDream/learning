@@ -5,4 +5,5 @@
 3、harbor文件夹 部署docker镜像私有仓库<br />
 4、ceph文件夹 使用ceph作为kubernetes的后端存储<br />
 5、helm文件夹 使用helm chart自定义应用商店<br />
+6、grafana-zh文件夹，使用grafana5.3.4版本汉化grafana可视化界面
 
