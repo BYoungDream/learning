@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"  alt=""/>
+<title>jQuery 3D圆盘旋转焦点图DEMO演示</title>
+<link rel="stylesheet" type="text/css" href="css/carousel.css" media="screen" alt=""/>
+<link rel="stylesheet" type="text/css" href="css/style.css" media="screen" alt=""/>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.carousel.min.js"></script>
+<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+<style type="text/css">
+#carousel:after {
+	position: absolute;left: -20%;
+    top:0;z-index: -1;content: '';border-radius: 0 0 50% 50%;
+    background:linear-gradient(#2CBAF9,#04A9F4);
+}
+</style>
+<script type="text/javascript">
+
+	jQuery(document).ready(function($){
+		$('#carousel').carousel({width: 870, 
+								 height: 550, 
+								 itemWidth:120, 
+								 horizontalRadius:270, 
+								 verticalRadius:85, 
+								 resize:true, 
+								 mouseScroll:false, 
+								 mouseDrag:true, 
+								 scaleRatio:0.7, 
+								 scrollbar:false, 
+								 tooltip:true, 
+								 mouseWheel:true,
+								 newScroll:true,
+								 newScrollsleep:3000,
+								 newScrollspeed:0.39,
+								 mouseWheelReverse:true});
+	});
+	
+</script>
+
+</head>
+
+<body>
+
+<div id="wide-wrapper">
+		<div style="text-align:center;clear:both">
+		</div>
+		<ul id="carousel">
+			<li>
+			    <a href="https://www.baidu.com">
+				<img src="images/image1.jpg" alt=""/>
+				</a>
+			</li>
+			<li>
+				<img src="images/image2.jpg" alt=""/>
+			</li>
+			<li>
+				<img src="images/image3.jpg" width="500" height="200" alt=""/>                   
+			</li>
+			<li>
+				<img src="images/image4.jpg" alt=""/>
+			</li>
+			<li>
+				<img src="images/image5.jpg" alt=""/>
+			</li>
+			<li>
+				<img src="images/image6.jpg" alt=""/>
+			</li>
+			<li>
+				<img src="images/image7.jpg" alt=""/>
+			</li>
+			<li>
+				<img src="images/newImage.png" alt=""/>
+			</li>
+		</ul>
+	
+</div>
+
+</body>
+
+</html>
