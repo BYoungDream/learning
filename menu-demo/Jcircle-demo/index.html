@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>响应式圆形js轮播图插件</title>
+<link href="css/jCircle.css" rel="stylesheet">
+<style type="text/css">
+	body{background-color: #262626}
+.container {
+	width: 800px;
+	margin: 30px auto;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div style="width:80%;margin:200px auto;">
+    <div id="circles-container">
+      <div id="main-circle-content"></div>
+      <div id="circle">
+        <div class="min-circle" data-inside="min-circle"> <a href="imgs/a1.png"> <img src="imgs/a1.png" alt=""> </a>
+          <div class="content-text">Caption 1</div>
+        </div>
+        <div class="min-circle" data-inside="min-circle"> <a href="imgs/a2.png"> <img src="imgs/a2.png" alt=""> </a>
+          <div class="content-text">Caption 2</div>
+        </div>
+        <div class="min-circle" data-inside="min-circle"> <a href="imgs/a3.png"> <img src="imgs/a3.png" alt=""> </a>
+          <div class="content-text">Caption 3</div>
+        </div>
+        <div class="min-circle" data-inside="min-circle"> <a href="imgs/a4.png"> <img src="imgs/a4.png" alt=""> </a>
+          <div class="content-text">Caption 4</div>
+        </div>
+        <div class="min-circle" data-inside="min-circle"> <a href="imgs/a5.png"> <img src="imgs/a5.png" alt=""> </a>
+          <div class="content-text">Caption 5</div>
+        </div>
+        <div class="min-circle" data-inside="min-circle"> <a href="imgs/a6.png"> <img src="imgs/a6.png" alt=""> </a>
+          <div class="content-text">Caption 6</div>
+        </div>
+        <div class="min-circle" data-inside="min-circle"> <a href="imgs/a7.png"> <img src="imgs/a7.png" alt=""> </a>
+          <div class="content-text">Caption 7</div>
+        </div>
+        <div class="min-circle" data-inside="min-circle"> <a href="imgs/a4.png"> <img src="imgs/a4.png" alt=""> </a>
+          <div class="content-text">Caption 8</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div style="width:60%;margin:300px auto;">
+    <div id="circles-container-text">
+      <div id="main-circle-content-text"></div>
+      <div id="circle-text">
+        <div class="min-circle" data-inside="min-circle"> <a href="imgs/a1.png" style="display:block;width:80%;margin:30% 10%;height:40%;text-align:center;font-size:1.2em;"> Title </a>
+          <div class="content-text">
+            <h2>Title</h2>
+            <p>we are always keep for nice idea about sun and other copleted jobs about us.</p>
+            <p><em>EM</em> is good way about tiger and it...</p>
+            <img src="imgs/a1.png" alt="" style="width:20%;height:20%;float:left;"> Is it possible to improve some taskes..this text have no meaning any way :). </div>
+        </div>
+        <div class="min-circle" data-inside="min-circle"> <a href="imgs/a2.png" style="display:block;width:80%;margin:30% 10%;height:40%;text-align:center;font-size:1.2em;"> About </a>
+          <div class="content-text">
+            <h2>About</h2>
+            <p>we are always keep for nice idea about sun and other copleted jobs about us.</p>
+            <p><em>EM</em> is good way about tiger and it...</p>
+            <span class="fa fa-heart" style="color:red;font-size:2.2em;"></span>Is it possible to improve some :) </div>
+        </div>
+        <div class="min-circle" data-inside="min-circle"> <a href="imgs/a3.png" style="display:block;width:80%;margin:30% 10%;height:40%;text-align:center;font-size:1.2em;"> Services </a>
+          <div class="content-text">
+            <h2>Services</h2>
+            <p>Services always keep for nice idea about sun and other copleted jobs about us.</p>
+            <p><b>Bold</b> is good way about tiger and it...</p>
+            <span class="fa fa-link" style="color:green;font-size:1em;"></span>Is it possible to improve some taskes..this text have no meaning any way :). </div>
+        </div>
+        <div class="min-circle" data-inside="min-circle"> <a href="imgs/a4.png" style="display:block;width:80%;margin:30% 10%;height:40%;text-align:center;font-size:1.2em;"> Support </a>
+          <div class="content-text">
+            <h2>Support</h2>
+            <p>Support always keep for nice idea about sun and other copleted jobs about us.</p>
+            <p><b>Yep</b> is good way about tiger and it...</p>
+            <span class="fa fa-download" style="color:blue;font-size:1em;"></span>Is it possible to improve some taskes..this text have no meaning any way :). </div>
+        </div>
+        <div class="min-circle" data-inside="min-circle"> <a href="imgs/a5.png" style="display:block;width:80%;margin:30% 10%;height:40%;text-align:center;font-size:1.2em;"> Offers </a>
+          <div class="content-text">
+            <h2>Offers</h2>
+            <p>Offers always keep for nice idea about sun and other copleted jobs about us.</p>
+            <p>is good way about tiger and it...</p>
+            <span class="fa fa-circle" style="color:green;font-size:1em;"></span>Is it possible to improve some taskes..this text have no meaning any way :). </div>
+        </div>
+        <div class="min-circle" data-inside="min-circle"> <a href="imgs/a6.png" style="display:block;width:80%;margin:30% 10%;height:40%;text-align:center;font-size:1.2em;"> Jobs </a>
+          <div class="content-text">
+            <h2>Jobs</h2>
+            <p>Jobs always keep for nice idea about sun and other copleted jobs about us.</p>
+            <p><b>Bold</b> is good way about tiger and it...</p>
+            <span class="fa fa-list" style="color:red;font-size:1em;"></span>Is it possible to improve some taskes..this text have no meaning any way :). </div>
+        </div>
+        <div class="min-circle" data-inside="min-circle"> <a href="imgs/a7.png" style="display:block;width:80%;margin:30% 10%;height:40%;text-align:center;font-size:1.2em;"> Like </a>
+          <div class="content-text">
+            <h2>Like</h2>
+            <p>Like always keep for nice idea about sun and other copleted jobs about us.</p>
+            <p><span class="fa fa-gg" style="color:green;font-size:3em;"> is good way about tiger and it...</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/jCircle.min.js"></script> 
+<script>
+	      var circle=new jCircle({
+	    'container': 'circles-container',
+	    'circle': 'circle',
+	    'mainContent':'main-circle-content',
+	    'animateCircles':true,
+	    'speed':3,
+	    'mainViewStyle':'normal',
+	    'minCirclesEffectOver':'pulse',
+	    'contentType':'images',
+	    'stopOnOverMain':false,
+	    'mainContentOverAction':'normal'
+	  });
+	  circle.create();
+	  
+	  var textCircle=new jCircle({
+	    'container': 'circles-container-text',
+	    'circle': 'circle-text',
+	    'mainContent':'main-circle-content-text',
+	    'animateCircles':true,
+	    'speed':3,
+	    'mainViewStyle':'normal',
+	    'minCirclesEffectOver':'rotate',
+	    'contentType':'text',
+	    'stopOnOverMain':true
+	  });
+	  textCircle.create();
+	    </script>
+</body>
+</html>
