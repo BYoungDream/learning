@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot2demo.demo.dao.RainfallMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.springboot2demo.demo.entity.Rainfall">
+        <id column="id" property="id" jdbcType="NUMERIC" />
+        <result column="stcd" property="stcd" jdbcType="VARCHAR" />
+        <result column="stnm" property="stnm" jdbcType="VARCHAR" />
+        <result column="year" property="year" jdbcType="NUMERIC" />
+        <result column="month" property="month" jdbcType="NUMERIC" />
+        <result column="rainfall" property="rainfall" jdbcType="FLOAT" />
+    </resultMap>
+    <select id="selectRainfall" resultMap="BaseResultMap">
+        SELECT * FROM rainfall where 1=1
+        <if test="stcd != null and stcd != ''" >
+            and stcd = #{stcd}
+        </if>
+        <if test="year != null" >
+            and  year = #{year}
+        </if>
+        <if test="month != null" >
+            and  month = #{month}
+        </if>
+    </select>
+
+    <select id="selectRainfall1" resultMap="BaseResultMap" parameterType="com.example.springboot2demo.demo.entity.Rainfall">
+        SELECT id,year,month,rainfall FROM rainfall
+        where id = #{id}
+    </select>
+
+    <update id="UpdateModel1" parameterType="com.example.springboot2demo.demo.entity.Rainfall">
+        update rainfall set
+        rainfall = #{rainfall}
+        where id = #{id}
+    </update>
+
+    <update id="UpdateModel">
+        update rainfall set
+        rainfall = #{rainfall}
+        where id = #{id}
+    </update>
+</mapper>
