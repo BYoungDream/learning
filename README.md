@@ -6,4 +6,6 @@
 4、ceph文件夹 使用ceph作为kubernetes的后端存储<br />
 5、helm文件夹 使用helm chart自定义应用商店<br />
 6、grafana-zh文件夹，使用grafana5.3.4版本汉化grafana可视化界面
+7、menu-demo文件夹，存放一些前端demo
+8、spring-demo文件夹，存放创建springboot项目demo
 
