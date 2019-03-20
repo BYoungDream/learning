@@ -7,6 +7,8 @@ import Cpzx from '@/components/cpzx'
 import Gywm from '@/components/gywm'
 import Jjfz from '@/components/jjfz'
 import Xxzx from '@/components/xxzx'
+import Qtly from '@/components/cpzd-qtly'
+import Qtlyt from '@/components/cpzd-qtlyt'
 
 Vue.use(ElementUI)
 Vue.use(Router)
@@ -19,7 +21,16 @@ export default new Router({
     }, {
         path: '/cpzx/:username',
         name: 'Cpzx',
-        component: Cpzx
+        component: Cpzx,
+        children: [
+            {
+                path: 'qtly',
+                component: Qtly
+            },{
+                path: 'qtlyt',
+                component: Qtlyt
+            }
+        ]
     }, {
         path: '/gywm',
         name: 'Gywm',
