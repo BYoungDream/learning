@@ -9,6 +9,8 @@ import Jjfz from '@/components/jjfz'
 import Xxzx from '@/components/xxzx'
 import Qtly from '@/components/cpzd-qtly'
 import Qtlyt from '@/components/cpzd-qtlyt'
+import Jjfaview1 from '@/components/jjfz-view'
+import Jjfaview2 from '@/components/jjfz-view2'
 
 Vue.use(ElementUI)
 Vue.use(Router)
@@ -38,7 +40,16 @@ export default new Router({
     }, {
         path: '/jjfz',
         name: 'Jjfz',
-        component: Jjfz
+        component: Jjfz,
+        children: [
+            {
+                path: 'jview1',
+                components: {
+                    default: Jjfaview1,
+                    jve: Jjfaview2
+                }
+            }
+        ]
     }, {
         path: '/xxzx',
         name: 'Xxzx',

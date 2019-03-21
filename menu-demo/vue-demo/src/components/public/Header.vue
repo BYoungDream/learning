@@ -14,10 +14,10 @@
           <el-submenu index="2">
             <template slot="title">路由(vue router)</template>
             <el-menu-item index="2-1">
-              <router-link to="/cpzx/张三">产品中心</router-link>
+              <router-link to="/cpzx/张三">动态路由</router-link>
             </el-menu-item>
             <el-menu-item index="2-2">
-              <router-link to="/jjfz">解决方案</router-link>
+              <router-link to="/jjfz">命名视图</router-link>
             </el-menu-item>
             <el-menu-item index="2-3">
               <router-link to="/xxzx">新闻中心</router-link>
