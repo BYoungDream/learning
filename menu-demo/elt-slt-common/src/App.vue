@@ -73,10 +73,8 @@ export default {
     },
     iconClick(item){
         //监听右侧图片上的Icon点击事件
-        //paramItem.LeftOnevalue(左侧第一个默认下拉列表的值)
-        //paramItem.LeftTwovalue(左侧第二个默认下拉列表的值)
-        //paramItem.rightActiveIndex(右侧选中的tabs的index索引) 根据此索引可以查询信息
-        //paramItem.rightCardImgClickIndex(右侧选中的img的index索引) 根据此索引可以查询信息
+        //item对象
+
     },
     searchClick(paramItem){
         //左侧点击查询按钮事件
@@ -84,6 +82,7 @@ export default {
         //paramItem.LeftTwovalue(左侧第二个默认下拉列表的值)
         //paramItem.rightActiveIndex(右侧选中的tabs的index索引) 根据此索引可以查询信息
         //paramItem.rightCardImgClickIndex(右侧选中的img的index索引) 根据此索引可以查询信息
+        //paramItem.iconList(右侧选中的img的imgcode列表) 方便在地图上打点
         this.SLTData.rightTableData=[
             {
                 name:"张三",
@@ -110,6 +109,26 @@ export default {
         //paramItem.LeftTwovalue(左侧第二个默认下拉列表的值)
         //paramItem.rightActiveIndex(右侧选中的tabs的index索引) 根据此索引可以查询信息
         //paramItem.rightCardImgClickIndex(右侧选中的img的index索引) 根据此索引可以查询信息
+        //paramItem.iconList(右侧选中的img的imgcode列表) 方便在地图上打点
+        console.log(paramItem);
+        this.SLTData.rightTableData=[
+            {
+                name:"张三",
+                age:"21",
+                sex:"男",
+                native:"北京"
+            },{
+                name:"李四",
+                age:"18",
+                sex:"男",
+                native:"上海"
+            },{
+                name:"赵武",
+                age:"23",
+                sex:"女",
+                native:"河南"
+            }
+        ]
 
     },
     rightImgClick(paramItem){
@@ -118,7 +137,25 @@ export default {
         //paramItem.LeftTwovalue(左侧第二个默认下拉列表的值)
         //paramItem.rightActiveIndex(右侧选中的tabs的index索引) 根据此索引可以查询信息
         //paramItem.rightCardImgClickIndex(右侧选中的img的index索引) 根据此索引可以查询信息
-
+        //paramItem.iconList(右侧选中的img的imgcode列表) 方便在地图上打点
+        this.SLTData.rightTableData=[
+            {
+                name:"张三",
+                age:"21",
+                sex:"男",
+                native:"北京"
+            },{
+                name:"李四",
+                age:"18",
+                sex:"男",
+                native:"上海"
+            },{
+                name:"赵武",
+                age:"23",
+                sex:"女",
+                native:"河南"
+            }
+        ]
     },
     tableRowClick(row){
         //右侧table行的点击事件

@@ -47,28 +47,29 @@
                                             @click="rightCardImgClick(index,itemimg)"
                                             :class="{'card-tab-pane-list':true,'card-tab-pane-list-over':index == rightCardImgHoverIndex,'card-tab-pane-list-selected':index == paramItem.rightCardImgClickIndex}">
                                                 <img :src="itemimg.imgsrc" class="card-tab-pane-list-img" >
-                                                <img src="../assets/sltimg/icon-selected.png" :class="{'card-tab-icon-img':true,'icon-show':!itemimg.iconShow}" @click.stop="rightCardIconClick(itemimg)" >
+                                                <img :src="itemimg.iconShow === true ? require('../assets/sltimg/icon-selected.png') : require('../assets/sltimg/icon-unselected.png')" class="card-tab-icon-img" v-if="itemimg.iconEnable" @click.stop="rightCardIconClick(itemimg)" >
                                                 <span>{{itemimg.imgname}}</span>
                                             </div>
                                         </div>
                                     </div>
-                                    <el-table
+                                    
+                                </el-tab-pane>
+                                <el-table
                                         :data="SLTData.rightTableData"
-                                        border
                                         @row-click="tableRowClick"
                                         height="332"
-                                        style="width: 100%; margin-top:5px;">
+                                        style="width: 100%; margin-top:-15px;">
                                         <el-table-column
                                             v-for="(itemtablefield,fieldindex) in rightTableField"
                                             :key="fieldindex"
                                             :prop="itemtablefield.prop"
                                             :label="itemtablefield.label"
                                             :width="itemtablefield.width"
-                                            :header-align="itemtablefield.align"
+                                            :header-align="itemtablefield.headalign"
+                                            :align="itemtablefield.align"
                                             style="background-color:#E4E7ED;">
                                         </el-table-column>
                                     </el-table>
-                                </el-tab-pane>
                             </el-tabs>
                         </div>
                     </el-card>
@@ -111,7 +112,9 @@ export default {
                 //右侧当前tabs的index索引
                 rightActiveIndex:"0",
                 //右侧当前img的index索引
-                rightCardImgClickIndex:"0"
+                rightCardImgClickIndex:"0",
+                //选中的Icon列表
+                iconList:[]
             },
             //右侧tabs的name值
             rightActiveName:"",
@@ -156,18 +159,50 @@ export default {
             this.rightTableField =  [];
             this.SLTData.rightTableData = [];
             this.paramItem.rightActiveIndex = tab.index;
+            this.paramItem.iconList=[];
+            this.paramItem.rightCardImgClickIndex=0;
+            for(var i=0;i<this.SLTData.RightData[this.paramItem.rightActiveIndex].context.length;i++){
+                if(this.SLTData.RightData[this.paramItem.rightActiveIndex].context[i].iconShow === true && 
+                  this.SLTData.RightData[this.paramItem.rightActiveIndex].context[i].iconEnable === true){
+                    this.paramItem.iconList.push(this.SLTData.RightData[this.paramItem.rightActiveIndex].context[i].imgcode);
+                }
+            }
             this.rightCardImgClick(0,this.SLTData.RightData[this.paramItem.rightActiveIndex].context[this.paramItem.rightCardImgClickIndex]);
             this.$emit("listenTabsClick",this.paramItem);
         },
         rightCardImgClick(index,itemimg){//右侧图片点击事件
             this.paramItem.rightCardImgClickIndex = index;
             this.rightTableField =  itemimg.tableField;
+
             itemimg.iconShow = true;
+            if(this.paramItem.iconList.indexOf(itemimg.imgcode) === -1 && 
+              itemimg.iconEnable === true){
+                this.paramItem.iconList.push(itemimg.imgcode);
+            }
+            
             this.$emit("listenRightImgClick",this.paramItem);
         },
-        rightCardIconClick(itemimg){//右侧点击Icon选中事件
+        rightCardIconClick(itemimg){//右侧点击Icon事件
             itemimg.iconShow = !itemimg.iconShow;
+            
+            if(itemimg.iconShow === true && itemimg.iconEnable === true){
+                if(this.paramItem.iconList.indexOf(itemimg.imgcode) === -1){
+                    this.paramItem.iconList.push(itemimg.imgcode);
+                }
+            }else{
+                this.paramItem.iconList.splice(this.arrayContains(this.paramItem.iconList,itemimg.imgcode),1);
+            }
+            
             this.$emit("listenIconClick",this.paramItem);
+        },
+        arrayContains(arrobj,val){//获取数组对应的值的索引
+            var i = arrobj.length;
+            while(i--){
+                if(arrobj[i] == val){
+                    return i;
+                }
+            }
+            return false;
         },
         tableRowClick(row,event,column){//右侧表格数据点击事件
             this.$emit("listenTableRowClick",row);
@@ -290,16 +325,14 @@ export default {
         padding: 7px 7px 0px 7px;
     }
     .card-tab-icon-img{
-        width:28px;
-        height: 25px;
+        width:18px;
+        height: 18px;
         position: absolute;
-        margin-left: 32px;
-        top:34px;
+        margin-left: 48px;
+        top:0px;
         z-index:10;
     }
-    .icon-show{
-        display: none;
-    }
+    
     .el-tabs__item{
         padding:0 10px;
     }
@@ -329,14 +362,15 @@ export default {
          display: block;
          cursor: pointer;
     }
-    .el-tabs--border-card{
-        height: 540px;
-    }
+
     .el-tabs--border-card{
         height: 500px;
+        border:0px solid #DCDFE6 !important;
+        -webkit-box-shadow: 0 0px 0px 0 rgba(0,0,0,0), 0 0 0px 0 rgba(0,0,0,0) !important;
+            box-shadow: 0 0px 0px 0 rgba(0,0,0,0), 0 0 0px 0 rgba(0,0,0,0) !important;
     }
     .el-table thead{
-        color: #409EFF;
+        color: #303133 !important;
     }
     .el-box-card{
         border:0; 
@@ -355,6 +389,33 @@ export default {
     }
     .hover-row{
         cursor: pointer;
+    }
+    .el-tabs__nav > .is-active{
+        background-color: #66b1ff !important;
+        color:#fff !important;
+        border-radius: 4px;
+    }
+    .el-tabs--border-card>.el-tabs__content{
+        padding:0px !important;
+    }
+    .el-tab-pane{
+        margin: 15px !important;
+    }
+    .el-tabs--border-card>.el-tabs__header{
+        border:1px solid #E4E7ED; 
+    }
+    .el-tabs__nav-next, .el-tabs__nav-prev{
+        line-height: 34px !important;
+    }
+    .el-tabs__item{
+        height: 34px;
+        line-height: 34px;
+    }
+    .el-table td, .el-table th{
+        padding:5px 0 !important;
+    }
+    .el-table th{
+        font-weight: normal !important;
     }
     /* end right */
 

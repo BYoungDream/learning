@@ -7,50 +7,66 @@ export default [
                {
                   imgsrc:require('../src/assets/sltimg/xhry.png'),
                   imgname:"巡河人员",
-                  iconShow:true,
+                  imgcode:"xhry",
+                  iconShow:false,
+                  iconEnable:true,
                   tableField:[
                       {
                           prop:"name",
                           label:"姓名",
-                          width:"75",
+                          width:"95",
+                          headalign:"center",
                           align:"center"
                       },{
                           prop:"age",
                           label:"年龄",
                           width:"75",
+                          headalign:"center",
                           align:"center"
                       },{
                           prop:"sex",
                           label:"性别",
                           width:"75",
+                          headalign:"center",
                           align:"center"
                       },{
                           prop:"native",
                           label:"籍贯",
-                          width:"67",
+                          width:"77",
+                          headalign:"center",
                           align:"center"
                       }
                   ]
               },{
                   imgsrc:require('../src/assets/sltimg/xhsj.png'),
                   imgname:"巡河事件",
-                  iconShow:true
+                  imgcode:"xhsj",
+                  iconShow:false,
+                  iconEnable:false,
+                  tableField:[
+                        {
+                            prop:"name",
+                            label:"姓名",
+                            width:"75",
+                            headalign:"center",
+                            align:"center"
+                        }
+                    ]
               },{
                   imgsrc:require('../src/assets/sltimg/gzjb.png'),
                   imgname:"公众举报",
-                  iconShow:false
-              },{
-                  imgsrc:require('../src/assets/sltimg/gzjb.png'),
-                  imgname:"测试信息",
-                  iconShow:false
-              },{
-                  imgsrc:require('../src/assets/sltimg/gzjb.png'),
-                  imgname:"测试内容",
-                  iconShow:false
-              },{
-                  imgsrc:require('../src/assets/sltimg/gzjb.png'),
-                  imgname:"测试结果",
-                  iconShow:false
+                  imgcode:"gzjb",
+                  iconShow:false,
+                  iconEnable:true,
+                  tableField:[
+                        {
+                            prop:"name",
+                            label:"姓名",
+                            width:"75",
+                            headalign:"center",
+                            align:"center"
+                        }
+                    ]
               }
           ]
       },{
@@ -60,7 +76,9 @@ export default [
             {
                 imgsrc:require('../src/assets/sltimg/xhry.png'),
                 imgname:"巡河信息",
-                iconShow:true,
+                imgcode:"xhxx",
+                iconShow:false,
+                iconEnable:true,
                 tableField:[
                     {
                         prop:"name",
@@ -76,30 +94,6 @@ export default [
                 ]
             }
           ]
-      },{
-          title:"角色管理",
-          name:"third",
-          context:[]
-      },{
-          title:"信息管理",
-          name:"four",
-          context:[]
-      },{
-          title:"内容管理",
-          name:"five",
-          context:[]
-      },{
-          title:"测试内容",
-          name:"six",
-          context:[]
-      },{
-          title:"我的管理",
-          name:"seven",
-          context:[]
-      },{
-          title:"它的管理",
-          name:"engin",
-          context:[]
       }
   
 ]
