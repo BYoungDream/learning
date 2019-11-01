@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>arcgis api for js调用百度地图</title>
+		<link rel="stylesheet" type="text/css" href="http://10.52.1.99/arcgis_js_api/4.6/esri/css/main.css">
+		<link rel="stylesheet" type="text/css" href="http://10.52.1.99/arcgis_js_api/4.6/dijit/themes/soria/soria.css">
+		<script type="text/javascript" src="http://10.52.1.99/arcgis_js_api/4.6/init.js"></script>
+		<script>
+			var dojoConfig = {
+				parseOnLoad: true,
+				packages: [{
+					name: "static",
+					location: location.pathname.replace(/\/[^/]+$/, "")+"/static"
+				}]
+			};
+			var map;
+			require([
+				"esri/Map",
+				"static/js/BaiduLayer.js",
+				"esri/views/MapView",
+				"esri/geometry/Extent",
+				"dojo/domReady!"
+			], function (Map,BaiduMapLayer,MapView,Extent) {
+				var BaiduMapLayer = new BaiduMapLayer();
+				// 地图初始范围
+				var initialExtent = new Extent(103.60, 24.62, 109.59, 29.22, null);
+				var map = new Map({
+					extent: initialExtent,
+					layers: [BaiduMapLayer]
+				});
+
+				var view = new MapView({
+					container: "map",
+					map: map,
+					extent: initialExtent,
+					center: [119.9, 40.7],
+					zoom: 4
+				});
+			});
+
+		</script>
+	</head>
+ 
+	<body>
+		<div id="map" style="width:100%; height:800px;"></div>
+	</body>
+ 
+</html>
