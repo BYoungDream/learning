@@ -3,7 +3,7 @@ package com.gyf;
 /**
  * created by guoyanfei on 2019/11/1
  * 营养成分实体类
- * 构造方法的参数过多时，请使用builder模式
+ * 2、构造方法的参数过多时，请使用builder模式
  */
 public class NutritionFacts {
     //供给大小
